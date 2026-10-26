@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusFlow | Student Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <a class="brand" href="#"><span class="brand-mark">F</span> FocusFlow</a>
+      <span class="student-label">STUDENT WORKSPACE</span>
+    </header>
+
+    <main>
+      <section class="welcome">
+        <div>
+          <p class="eyebrow">YOUR DAY, ORGANIZED</p>
+          <h1>Make room for <span>what matters.</span></h1>
+          <p class="subheading">Plan your study sessions, estimate time, and look back at what you've accomplished.</p>
+        </div>
+        <div class="date-card"><span id="dayName"></span><strong id="fullDate"></strong></div>
+      </section>
+
+      <section class="stats" aria-label="Task statistics">
+        <article class="stat-card"><span class="stat-icon purple">☷</span><div><p>Total tasks</p><strong id="totalCount">0</strong></div></article>
+        <article class="stat-card"><span class="stat-icon green">✓</span><div><p>Completed</p><strong id="completedCount">0</strong></div></article>
+        <article class="stat-card"><span class="stat-icon orange">◷</span><div><p>Time planned</p><strong id="plannedTime">0m</strong></div></article>
+      </section>
+
+      <section class="workspace">
+        <div class="task-panel">
+          <div class="section-heading">
+            <div><p class="eyebrow">YOUR CHECKLIST</p><h2>My tasks</h2></div>
+            <span class="task-total" id="taskTotalLabel">0 items</span>
+          </div>
+
+          <form id="taskForm" class="task-form">
+            <label class="sr-only" for="taskInput">Task name</label>
+            <input id="taskInput" type="text" maxlength="100" placeholder="What do you need to do?" required>
+            <label class="sr-only" for="priorityInput">Priority</label>
+            <select id="priorityInput" aria-label="Task priority">
+              <option value="Medium">Medium priority</option>
+              <option value="High">High priority</option>
+              <option value="Low">Low priority</option>
+            </select>
+            <label class="sr-only" for="durationInput">Estimated duration</label>
+            <select id="durationInput" aria-label="Estimated duration">
+              <option value="15">15 minutes</option>
+              <option value="30" selected>30 minutes</option>
+              <option value="45">45 minutes</option>
+              <option value="60">1 hour</option>
+              <option value="90">1.5 hours</option>
+              <option value="120">2 hours</option>
+              <option value="180">3 hours</option>
+            </select>
+            <button type="submit">+ Add task</button>
+          </form>
+
+          <div class="filters" role="group" aria-label="Filter tasks">
+            <button class="filter active" data-filter="all">All tasks</button>
+            <button class="filter" data-filter="active">To do</button>
+            <button class="filter" data-filter="completed">Completed</button>
+          </div>
+          <div id="taskList" class="task-list"></div>
+          <div id="emptyState" class="empty-state">
+            <span>✦</span><h3>Nothing on your list yet</h3><p>Add a task above and take the first step.</p>
+          </div>
+        </div>
+
+        <aside class="side-panel">
+          <div class="progress-card">
+            <p class="eyebrow">YOUR PROGRESS</p>
+            <h2>Small steps add up.</h2>
+            <div class="progress-ring" id="progressRing"><div><strong id="progressPercent">0%</strong><span>completed</span></div></div>
+            <p class="progress-caption" id="progressCaption">Every task is a fresh start.</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon">✧</span><p class="eyebrow">A LITTLE REMINDER</p>
+            <h3>Focus on progress, not perfection.</h3>
+            <p>Choose one important task and give it your attention.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="history-panel">
+        <div class="section-heading">
+          <div><p class="eyebrow">YOUR ACTIVITY LOG</p><h2>Task history</h2></div>
+          <button id="clearHistoryBtn" class="secondary-btn" type="button">Clear history</button>
+        </div>
+        <p class="history-intro">Completed and deleted tasks appear here, with the time they were recorded.</p>
+        <div id="historyList" class="history-list"></div>
+        <div id="historyEmpty" class="history-empty">Your activity will appear here as you use FocusFlow.</div>
+      </section>
+
+      <footer>Built with HTML, CSS & JavaScript <span>•</span> Tasks and history are saved in this browser.</footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
